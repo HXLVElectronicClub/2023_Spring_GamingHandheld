@@ -102,7 +102,7 @@ void testControl() {
 #endif
 
   int sw = digitalRead(JOY_SW);
-  //int btn = digitalRead(BTNP);
+  int btn = digitalRead(BTNP);
 
   Serial.print("VRX=");
   Serial.print(rawx);
@@ -115,7 +115,7 @@ void testControl() {
   Serial.print("\tSW=");
   Serial.print(sw);
   Serial.print("\tbtn=");
-  //Serial.print(btn);
+  Serial.print(btn);
   Serial.println();
 
   lc1.clearDisplay(0);
@@ -123,7 +123,7 @@ void testControl() {
   lc2.clearDisplay(0);
   
   if (sw == 0 
-    //|| btn == 0
+    || btn == 0
   ) {
     lc2.setRow(0,3,0x18);
     lc2.setRow(0,4,0x18);
