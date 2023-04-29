@@ -33,6 +33,7 @@
 #include <WProgram.h>
 #endif
 
+#ifdef SEVEN_SEGMENT
 /*
  * Segments to be switched on for characters and digits on
  * 7-Segment Displays
@@ -55,6 +56,7 @@ const static byte charTable[128] = {
     B01100111,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,
     B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000
 };
+#endif
 
 class LedControl {
  private :
@@ -119,6 +121,7 @@ class LedControl {
      */
     void setIntensity(int addr, int intensity);
 
+#ifndef SEVEN_SEGMENT
     /* 
      * Switch all Leds on the display off. 
      * Params:
@@ -156,7 +159,7 @@ class LedControl {
      *		corresponding Led.
      */
     void setColumn(int addr, int col, byte value);
-
+#else
     /* 
      * Display a hexadecimal digit on a 7-Segment Display
      * Params:
@@ -180,6 +183,7 @@ class LedControl {
      * dp	sets the decimal point.
      */
     void setChar(int addr, int digit, char value, boolean dp);
+#endif
 };
 
 #endif	//LedControl.h

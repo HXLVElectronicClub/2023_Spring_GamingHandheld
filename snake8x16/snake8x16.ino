@@ -56,6 +56,7 @@ long current_time;
 long prev_advance;
 int blink_count;
 const short messageSpeed = 8;
+bool food_flash = 0;
 
 LedControl lc1 = LedControl(LED1_DIN, LED1_CLK, LED1_CS, 1);
 LedControl lc2 = LedControl(LED2_DIN, LED2_CLK, LED2_CS, 1);
@@ -89,7 +90,8 @@ void render() {
     buff[snake[i][0]] = buff[snake[i][0]] | (B10000000>>snake[i][1]);
   }
   
-  buff[food[0]] = buff[food[0]] | (B10000000>>food[1]);
+  if (food_flash == 0) 
+    buff[food[0]] = buff[food[0]] | (B10000000>>food[1]);
   
   for (int y = 0; y < SIZE_H; y++) {
     //if (buff[y] > 0) {
@@ -103,11 +105,6 @@ void render() {
 }
 
 void clearScreen() {
-  /*for (int x = 0; x < SIZE; x++) {
-    for (int y = 0; y < SIZE; y++) {
-      lc1.setLed(0, x, y, 0);
-    }
-  }*/
   lc1.clearDisplay(0);
   lc2.clearDisplay(0);
 }
@@ -119,25 +116,13 @@ void clearScreen() {
 bool advance() {
   int head[2] = {snake[0][0] + v[0], snake[0][1] + v[1]};
 
-  if (head[0] < 0 || head[0] >= SIZE_H) {
-
-            delay(1000);
-    showGameOverMessage();
-      return true;
-  }
-
-  if (head[1] < 0 || head[1] >= SIZE_W) {
-
-            delay(1000);
-    showGameOverMessage();
-      return true;
+  if (head[0] < 0 || head[0] >= SIZE_H || head[1] < 0 || head[1] >= SIZE_W) {
+    return true;
   }
 
   for (int i = 1; i < length; i++) {
       if (snake[i][0] == head[0] && snake[i][1] == head[1]) {
-            delay(1000);
-        showGameOverMessage();
-          return true;
+        return true;
       }
   }
 
@@ -177,6 +162,7 @@ void setup() {
   digitalWrite(BTNN, 0);
   
   attachInterrupt(digitalPinToInterrupt(JOY_SW), restart, RISING);
+  attachInterrupt(digitalPinToInterrupt(BTNP), restart, FALLING);
 
   lc1.shutdown(0, false);
   lc1.setIntensity(0, 8);
@@ -192,27 +178,35 @@ void loop() {
     //clearScreen();
     render();
 
-    if (current_time - prev_advance > ADVANCE_DELAY) {
+    if (current_time - prev_advance > (ADVANCE_DELAY - length * 20)) {
       is_game_over = advance();
+      if (is_game_over) {
+        delay(1000);
+        showGameOverMessage();
+      }
       prev_advance = current_time;    
+      food_flash = 0;
+    } else if (current_time - prev_advance > (ADVANCE_DELAY - length * 20)/2) {
+      food_flash = 1;
     }
   } else {
     while (blink_count > 0) {
-      //clearScreen();
+      clearScreen();
       delay(300);
       render();
       delay(300);
-      blink_count--;     
-         
+      blink_count--;
     }
   }
   readControls();
   current_time++;
 }
 
-void restart() {  
-  init_game();
-  is_game_over = false;
+void restart() {    
+  if (is_game_over) {
+    init_game();
+    is_game_over = false;
+  }
 }
 
 void readControls() {

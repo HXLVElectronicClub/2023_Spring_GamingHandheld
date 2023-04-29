@@ -97,6 +97,7 @@ void LedControl::setIntensity(int addr, int intensity) {
     
 }
 
+#ifndef SEVEN_SEGMENT
 void LedControl::clearDisplay(int addr) {
     int offset;
 
@@ -152,7 +153,7 @@ void LedControl::setColumn(int addr, int col, byte value) {
 	setLed(addr,row,col,val);
     }
 }
-
+#else
 void LedControl::setDigit(int addr, int digit, byte value, boolean dp) {
     int offset;
     byte v;
@@ -190,7 +191,7 @@ void LedControl::setChar(int addr, int digit, char value, boolean dp) {
     status[offset+digit]=v;
     spiTransfer(addr, digit+1,v);
 }
-
+#endif
 void LedControl::spiTransfer(int addr, volatile byte opcode, volatile byte data) {
     //Create an array with the data to shift out
     int offset=addr*2;
