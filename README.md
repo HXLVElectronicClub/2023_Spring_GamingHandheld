@@ -2,6 +2,12 @@
 We are going to make a handheld gaming device with limited parts.
 This is the final project for Electronic Club 2023 Spring.
 
+# Quick Start
+* Follow the video to put everything into the box, connect the wire
+* Download the latest release and extract it
+https://github.com/HXLVElectronicClub/2023_Spring_GamingHandheld/archive/refs/tags/v0.01.zip
+* Upload to board
+
 # Follow the video to make it
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=ZbSbYy5ZNGo" target="_blank">
  <img src="http://img.youtube.com/vi/ZbSbYy5ZNGo/0.jpg" alt="Watch the video" border="10" />
