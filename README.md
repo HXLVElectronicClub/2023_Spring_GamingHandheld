@@ -21,17 +21,17 @@ https://www.amazon.com/dp/B09Y399S84
 https://www.amazon.com/dp/B07YZT5NSW
 
 * Button
-https://www.amazon.com/Gikfun-12x12x7-3-Tactile-Momentary-Arduino/dp/B01E38OS7K
+https://www.amazon.com/dp/B01E38OS7K
 
 * ESP32 Board
-https://www.amazon.com/Development-Microcontroller-Integrated-Antenna-Amplifiers/dp/B09GK74F7N
+https://www.amazon.com/dp/B09GK74F7N
 This one is not the same as on the video, but should be similiar enough
 
 * Step down voltage converter
 https://www.amazon.com/dp/B00LODGDYE
 
 * Power Switch
-https://www.amazon.com/Position-Breadboard-Electronic-Miniature-SlideSwitch/dp/B09R43HCY3
+https://www.amazon.com/dp/B09R43HCY3
 
 * 9V battery connecter
 https://www.amazon.com/dp/B079HYPCZD
@@ -39,7 +39,7 @@ https://www.amazon.com/dp/B079HYPCZD
 * Prototype board and wires
 The prototype board is used to solder connector, the switch and the voltage converter
 
-  https://www.amazon.com/ELEGOO-Prototpe-Soldering-Compatible-Arduino/dp/B072Z7Y19F
+  https://www.amazon.com/dp/B072Z7Y19F
   
   https://www.amazon.com/dp/B07GD1ZCHQ
   
