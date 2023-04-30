@@ -5,7 +5,7 @@ This is the final project for Electronic Club 2023 Spring.
 # Quick Start
 * Follow the video to put everything into the box, connect the wire
 * Download the latest release and extract it
-https://github.com/HXLVElectronicClub/2023_Spring_GamingHandheld/archive/refs/tags/v0.01.zip
+https://github.com/HXLVElectronicClub/2023_Spring_GamingHandheld/releases/latest
 * Upload to board
 
 # Follow the video to make it
