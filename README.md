@@ -44,3 +44,37 @@ The prototype board is used to solder connector, the switch and the voltage conv
   https://www.amazon.com/dp/B07GD1ZCHQ
   
 * 3D print part
+
+## Wire Connection
+* Joystick
+
+SW  ---    26
+
+VRY ---    25
+
+VRX ---    33
+
+5V  ---    32
+
+GND ---    27
+
+
+* Display
+
+LED1_CLK  ---   4
+
+LED1_CS   ---   16
+
+LED1_DIN  ---   17
+
+LED2_CLK  ---   21
+
+LED2_CS   ---   22
+
+LED2_DIN  ---   23
+
+VCC/GND connect to power board output
+
+* Button
+
+2 pins connect to 18, 19
